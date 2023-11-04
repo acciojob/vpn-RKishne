@@ -23,7 +23,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public User register(String username, String password, String countryName) throws Exception{
-        Boolean isPresent=false;
+        boolean isPresent=false;
 
         String CountryNameInUpperCase= countryName.toUpperCase();
 

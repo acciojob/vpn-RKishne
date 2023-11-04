@@ -50,13 +50,13 @@ public class AdminServiceImpl implements AdminService {
 
     @Override
     public ServiceProvider addCountry(int serviceProviderId, String countryName) throws Exception{
-        Boolean isPresent=false;
+        boolean isPresent = false;
 
         String CountryNameInUpperCase=countryName.toUpperCase();
 
         for(CountryName countryName1:CountryName.values()){
             if(countryName1.toString().equals(CountryNameInUpperCase)){
-                isPresent=true;
+                isPresent = true;
             }
         }
         if(!isPresent){

@@ -33,21 +33,21 @@ public class ConnectionServiceImpl implements ConnectionService {
             throw new Exception("Unable to connect");
         }
         List<ServiceProvider> serviceProviderList=user.getServiceProviderList();
-        int x=Integer.MIN_VALUE;
+        int x=Integer.MAX_VALUE;
         ServiceProvider serviceProvider=null;
         Country country=null;
 
         for(ServiceProvider serviceProvider1:serviceProviderList){
             List<Country> countryList=serviceProvider1.getCountryList();
             for(Country country1:countryList){
-                if(countryName.equalsIgnoreCase(country1.getCountryName().toString()) && x>serviceProvider1.getId()){
+                if(countryName.equalsIgnoreCase(country1.getCountryName().toString()) && x > serviceProvider1.getId()){
                     x=serviceProvider1.getId();
                     serviceProvider=serviceProvider1;
                     country=country1;
                 }
             }
         }
-        if(serviceProvider!=null){
+        if(serviceProvider != null){
             Connection connection=new Connection();
             connection.setUser(user);
             connection.setServiceProvider(serviceProvider);
@@ -95,7 +95,12 @@ public class ConnectionServiceImpl implements ConnectionService {
                     countryName=countryName1.toString();
                 }
             }
-            sender=connect(senderId,countryName);
+            try{
+                sender = connect(senderId, countryName);
+
+            }catch (Exception e){
+                throw new Exception("Cannot establish communication");
+            }
 
             if(!sender.getConnected()){
                 throw new Exception("Cannot establish communication");
