@@ -7,7 +7,7 @@ import javax.persistence.*;
 public class Connection {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer connectionId;
+    private int id;
 
     @JoinColumn
     @ManyToOne
@@ -17,21 +17,21 @@ public class Connection {
     @ManyToOne
     private ServiceProvider serviceProvider;
 
-    public Connection(Integer connectionId, User user, ServiceProvider serviceProvider) {
-        this.connectionId = connectionId;
+    public Connection() {
+    }
+
+    public Connection(int id, User user, ServiceProvider serviceProvider) {
+        this.id = id;
         this.user = user;
         this.serviceProvider = serviceProvider;
     }
 
-    public Connection() {
+    public Integer getId() {
+        return id;
     }
 
-    public Integer getConnectionId() {
-        return connectionId;
-    }
-
-    public void setConnectionId(Integer connectionId) {
-        this.connectionId = connectionId;
+    public void setId(int id) {
+        this.id = id;
     }
 
     public User getUser() {

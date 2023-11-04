@@ -9,7 +9,7 @@ import java.util.List;
 public class ServiceProvider {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    private int id;
 
     private String name;
 
@@ -30,7 +30,7 @@ public class ServiceProvider {
     public ServiceProvider() {
     }
 
-    public ServiceProvider(Integer id, String name, Admin admin, List<User> users, List<Country> countryList, List<Connection> connectionList) {
+    public ServiceProvider(int id, String name, Admin admin, List<User> users, List<Country> countryList, List<Connection> connectionList) {
         this.id = id;
         this.name = name;
         this.admin = admin;
@@ -43,7 +43,7 @@ public class ServiceProvider {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(int id) {
         this.id = id;
     }
 
