@@ -67,7 +67,7 @@ public class ConnectionServiceImpl implements ConnectionService {
     public User disconnect(int userId) throws Exception {
         User user=userRepository2.findById(userId).get();
 
-        if(!user.getConnected()){
+        if(user.getConnected()){
             throw new Exception("Already dissconnected");
         }
         user.setMaskedIp(null);
@@ -102,7 +102,7 @@ public class ConnectionServiceImpl implements ConnectionService {
                 throw new Exception("Cannot establish communication");
             }
 
-            if(!sender.getConnected()){
+            if(sender.getConnected()){
                 throw new Exception("Cannot establish communication");
             }
             return sender;
@@ -112,7 +112,7 @@ public class ConnectionServiceImpl implements ConnectionService {
         }
         String recieverCountryName=receiver.getOriginalCountry().getCountryName().toString();
         sender=connect(senderId,recieverCountryName);
-        if(!sender.getConnected()){
+        if(sender.getConnected()){
             throw new Exception("Cannot establish communication");
         }
         return sender;
